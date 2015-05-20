@@ -1,0 +1,20 @@
+<ion-view title="Location Preferences">
+  <ion-content class="padding">
+
+    <div class="list">
+      <div class="item item-divider">
+        Select location type
+      </div>
+
+      <ion-radio ng-repeat="type in locCtrl.locTypes"
+                 ng-value="type.code">
+        {{ type.name }}
+      </ion-radio>
+    </div>
+    <button class="button button-block button-positive">
+      Get Recommendation
+      <i class="ion-android-arrow-dropright-circle"></i>
+    </button>
+
+  </ion-content>
+</ion-view>

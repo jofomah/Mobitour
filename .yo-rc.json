@@ -1,0 +1,23 @@
+{
+  "generator-m": {
+    "answers": {
+      "appName": "mobitour",
+      "appId": "com.jofomah.mobitour",
+      "bowerPackages": [
+        "angular-localForage#~1.2.2"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "plugins": [
+        "cordova-plugin-device",
+        "cordova-plugin-dialogs",
+        "cordova-plugin-inappbrowser",
+        "cordova-plugin-network-information",
+        "cordova-plugin-splashscreen",
+        "cordova-plugin-statusbar"
+      ],
+      "appModule": "mobitour"
+    }
+  }
+}

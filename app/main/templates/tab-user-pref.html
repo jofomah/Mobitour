@@ -1,0 +1,59 @@
+<ion-view title="User Preferences">
+  <ion-content class="padding">
+    <div class="list">
+
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Username</span>
+        <input type="text" placeholder="username" name="username"
+               ng-model="userCtrl.username"
+               ng-model-options="{ debounce: 500 }">
+      </label>
+    </div>
+
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">Budget range</div>
+        <select>
+          <option value="">Select budget range</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="very-high">Very High</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">Type of visitor</div>
+        <select>
+          <option value="">Select visitor type</option>
+          <option value="low">First time</option>
+          <option value="medium">Been a while I came</option>
+          <option value="high">Always coming</option>
+          <option value="very-high">Lives here</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">Preferred crowd size</div>
+        <select>
+          <option value="">Select preferred crowd size</option>
+          <option value="low">< 5</option>
+          <option value="medium">6 – 10</option>
+          <option value="high">11 – 20</option>
+          <option value="very-high">> 20</option>
+        </select>
+      </label>
+    </div>
+
+    <button class="button button-block button-positive">
+      <span>Save and continue</span>
+      <i class="ion-android-arrow-dropright-circle"></i>
+    </button>
+
+  </ion-content>
+</ion-view>
