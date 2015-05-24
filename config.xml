@@ -23,11 +23,18 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="^4.0.0" />
+    <platform name="android">
+        <icon src="www/main/assets/images/icon.png" density="ldpi" />
+        <icon src="www/main/assets/images/icon.png" density="mdpi" />
+        <icon src="www/main/assets/images/icon.png" density="hdpi" />
+        <icon src="www/main/assets/images/icon.png" density="xhdpi" />
+    </platform>
+
+    <icon src="www/main/assets/images/icon.png" />
     <plugin name="cordova-plugin-device" spec="^1.0.0" />
     <plugin name="cordova-plugin-dialogs" spec="^1.1.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^1.0.0" />
     <plugin name="cordova-plugin-network-information" spec="^1.0.0" />
-    <plugin name="cordova-plugin-splashscreen" spec="^2.0.0" />
     <plugin name="cordova-plugin-statusbar" spec="^1.0.0" />
+    <engine name="android" spec="^4.0.2" />
 </widget>
