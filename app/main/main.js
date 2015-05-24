@@ -4,34 +4,42 @@ angular
       'ionic',
       'ngCordova',
       'ui.router',
-      // TODO: load other modules selected during generation
+      'recommender',
+      'user',
+      'location'
     ])
     .config(function ($stateProvider, $urlRouterProvider) {
 
       //default home
-      $urlRouterProvider.otherwise('/tab/location-pref');
+      $urlRouterProvider.otherwise('/home');
 
       // some basic routing
       $stateProvider
-          .state('tab', {
-            url: '/tab',
-            abstract: true,
-            templateUrl: 'main/templates/index.html',
-          })
-          .state('tab.locationPref', {
-            url: '/location-pref',
-            views: {
-              'tab-location': {
-                templateUrl: 'main/templates/tab-location.html',
-                controller: 'LocationPrefCtrl as locCtrl'
+          .state('home', {
+            url: '/home',
+            cache: false,
+            templateUrl: 'main/templates/home.html',
+            controller: 'MainCtrl as mainCtrl',
+            resolve: {
+              userProfile: function (userService, $state) {
+                return userService.getUserProfile()
+                    .catch(function (err) {
+                      $state.go('userPref');
+                      return err;
+                    });
               }
             }
           })
-          .state('tab.userPref', {
+          .state('userPref', {
             url: '/user-pref',
-            views: {
-              'tab-user': {
-                templateUrl: 'main/templates/tab-user-pref.html'
+            templateUrl: '../user/templates/user-pref.html',
+            controller: 'UserPrefCtrl as userCtrl',
+            resolve: {
+              userProfile: function (userService, $q) {
+                return userService.getUserProfile()
+                    .catch(function () {
+                      return $q.when({});
+                    });
               }
             }
           });

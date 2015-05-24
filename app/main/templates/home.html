@@ -1,0 +1,57 @@
+<ion-view title="Location Preferences">
+  <ion-nav-buttons side="primary">
+    <a class="button button-large button-dark" ui-sref="userPref">
+      <i class="icon ion-android-contact"></i>
+      User Profile
+    </a>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <ion-list>
+      <form name="facilityPrefForm" novalidate
+            ng-submit="mainCtrl.getRecommendation(facilityPrefForm.$valid)">
+        <div class="list">
+          <div class="item item-divider">
+            <i class="ion-android-pin"></i>
+            <span>Select location type</span>
+          </div>
+
+          <ion-radio name="placeType"
+                     ng-required="true"
+                     ng-repeat="type in mainCtrl.locTypes"
+                     ng-model="mainCtrl.placeType"
+                     ng-value="type.code">
+            {{ type.name }}
+          </ion-radio>
+        </div>
+        <button type="submit" class="button button-block button-positive button-large">
+          Get Recommendation
+          <i class="ion-android-arrow-dropright-circle"></i>
+        </button>
+      </form>
+    </ion-list>
+
+    <!-- Empty recommended place div -->
+    <ion-list ng-show="facilityPrefForm.$submitted && mainCtrl.locations.length === 0">
+      <ion-item>
+        <span>
+          No facility meet your requirement, please update your preferences or change location type!
+        </span>
+      </ion-item>
+    </ion-list>
+
+    <!-- Recommended places list view -->
+    <ion-list ng-show="facilityPrefForm.$submitted && mainCtrl.locations.length > 0">
+      <ion-item class="item item-thumbnail-left"
+                ng-repeat="loc in mainCtrl.locations track by $index">
+        <img src="loc.image.jpg">
+        <h2 ng-bind="loc.name"></h2>
+        <p>Type: {{ loc.type }}</p>
+        <p>Address: {{ loc.address }}</p>
+        <p> Ammenities: {{ loc.ammenities.join(', ') }}</p>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+
+</ion-view>
