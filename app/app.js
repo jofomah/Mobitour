@@ -1,5 +1,10 @@
 'use strict';
-angular.module('mobitour', [
-  // your modules
-  'main'
-]);
+
+angular
+		.module('mobitour', [
+			'main',
+			'LocalForageModule'
+		])
+		.run(function ($localForage) {
+			//Remove later, for easy clearing of storage. $localForage.clear();
+		});

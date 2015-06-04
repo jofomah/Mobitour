@@ -1,66 +1,81 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>mobitour</title>
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <title>Mobitour</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
 
-    <!-- build:css main/styles/main.css -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="main/styles/main.css">
-    <!-- endinject -->
-    <!-- endbuild -->
-  </head>
-  <body ng-app="mobitour">
-  <!--
+  <!-- build:css main/styles/main.css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="main/styles/main.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+<body ng-app="mobitour">
+<!--
 The nav bar that will be updated as we navigate between views.
 -->
-  <ion-nav-bar class="bar-calm nav-title-slide-ios7">
-    <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">
-      Back
-    </ion-nav-back-button>
-  </ion-nav-bar>
-  <!--
-  The views will be rendered in the <ion-nav-view> directive below
-  Templates are in the /templates folder (but you could also
-  have templates inline in this html file if you'd like).
-  -->
-  <ion-nav-view></ion-nav-view>
-  <ion-footer-bar align-title="left" class="bar-calm">
-    <span>© 2015 JOfomah v0.0.1</span>
-  </ion-footer-bar>
+<ion-nav-bar class="bar-calm nav-title-slide-ios7">
+  <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">
+  </ion-nav-back-button>
+</ion-nav-bar>
+<!--
+The views will be rendered in the <ion-nav-view> directive below
+Templates are in the /templates folder (but you could also
+have templates inline in this html file if you'd like).  -->
+
+<ion-nav-view></ion-nav-view>
+<ion-footer-bar align-title="left" class="bar-calm">
+  <span>© 2015 JOfomah v0.0.1</span>
+</ion-footer-bar>
 
 
-  <script src="cordova.js"></script> <!-- will be a 404 during development -->
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/ionic/release/js/ionic.js"></script>
-    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
-    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
-    <script src="bower_components/localforage/dist/localforage.js"></script>
-    <script src="bower_components/angular-localForage/dist/angular-localForage.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+<script src="cordova.js"></script>
+<!-- will be a 404 during development -->
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/ionic/release/js/ionic.js"></script>
+<script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+<script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+<script src="bower_components/localforage/dist/localforage.js"></script>
+<script src="bower_components/angular-localForage/dist/angular-localForage.js"></script>
+<script src="bower_components/pouchdb/dist/pouchdb.js"></script>
+<script src="bower_components/angular-pouchdb/angular-pouchdb.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
-    <!-- build:js scripts/app.js -->
-    <!-- inject:js -->
-    <script src="main/main.js"></script>
-    <script src="main/services/start-serv.js"></script>
-    <script src="main/controllers/location-pref.ctrl.js"></script>
-    <script src="main/constants/config-const.js"></script>
-    <script src="app.js"></script>
-    <!-- endinject -->
-    <!-- endbuild -->
-  </body>
+<!-- build:js scripts/app.js -->
+<!-- inject:js -->
+<script src="user/user.js"></script>
+<script src="user/services/user-service.js"></script>
+<script src="user/directives/validation.directive.js"></script>
+<script src="user/controllers/user-preference.controller.js"></script>
+<script src="user/constants/config-const.js"></script>
+<script src="recommender/recommender.js"></script>
+<script src="recommender/services/recommender.service.js"></script>
+<script src="recommender/constants/config-const.js"></script>
+<script src="main/main.js"></script>
+<script src="main/controllers/main.ctrl.js"></script>
+<script src="main/constants/config-const.js"></script>
+<script src="location/location.js"></script>
+<script src="location/services/location.service.js"></script>
+<script src="location/constants/config-const.js"></script>
+<script src="db/db.js"></script>
+<script src="db/services/db.service.js"></script>
+<script src="db/constants/db.constant.js"></script>
+<script src="app.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+</body>
 </html>

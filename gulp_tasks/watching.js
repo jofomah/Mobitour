@@ -36,7 +36,7 @@ var open = function () {
 };
 
 // WATCH
-gulp.task('watch', ['serve', 'linting'], function () {
+gulp.task('watch', ['serve'], function () {
   $.livereload.listen();
 
   gulp.watch([
@@ -49,7 +49,7 @@ gulp.task('watch', ['serve', 'linting'], function () {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     if (event.type === 'changed') {
       $.livereload.reload();
-      gulp.start('linting');
+      //gulp.start('linting');
     }
     else { // added or deleted
       gulp.start('inject-all'); // inject in index (implicitly reloads)
