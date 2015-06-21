@@ -17,6 +17,9 @@
 # build folder
 /www/**
 
+# config folder
+/app/db/constants/db.constant.js
+
 # IDE
 *.sublime-project
 *.sublime-workspace
