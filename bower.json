@@ -7,7 +7,8 @@
     "angular-ui-router": "~0.2.13",
     "ngCordova": "~0.1.14-alpha",
     "angular-localForage": "~1.2.2",
-    "angular-pouchdb": "~2.1.0"
+    "angular-pouchdb": "~2.1.0",
+    "ionic-rating": "~0.1.0"
   },
   "devDependencies": {},
   "resolutions": {
