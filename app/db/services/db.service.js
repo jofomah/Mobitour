@@ -5,6 +5,7 @@ angular
     .service('dbService', function (DBConfig, pouchDB, $window) {
 
       var _this = this;
+      var DB_URL = DBConfig.DB_URL;
 
       var defaultOpt = {
         /*eslint-disable camelcase */
@@ -27,8 +28,8 @@ angular
         }
         return pouchDB(dbName, options);
       }
-
-      var local = create(DBConfig.DB_NAME);
+      
+      var remote = pouchDB(DB_URL);
 
       _this.addTimeInfo = function (doc) {
         var now = new Date().toJSON();
@@ -40,7 +41,7 @@ angular
       };
 
       _this.get = function (id) {
-        return local.get(id);
+        return remote.get(id);
       };
 
       _this.save = function (doc) {
@@ -50,7 +51,7 @@ angular
               .catch(function () {
                 var id = doc._id;
                 delete doc._id;
-                return local.put(doc, id)
+                return remote.put(doc, id)
                     .then(function (res) {
                       doc._id = res.id;
                       doc._rev = res.rev;
@@ -69,7 +70,7 @@ angular
               .catch(function () {
                 var id = doc._id;
                 delete doc._id;
-                return local.put(doc, id)
+                return remote.put(doc, id)
                     .then(function (res) {
                       doc._id = res.id;
                       doc._rev = res.rev;
@@ -83,7 +84,7 @@ angular
 
       _this.insert = function (doc) {
         doc = _this.addTimeInfo(doc);
-        return local.post(doc)
+        return remote.post(doc)
             .then(function (res) {
               doc._id = res.id;
               doc._rev = res.rev;
@@ -93,10 +94,10 @@ angular
 
       _this.update = function (doc) {
         doc = _this.addTimeInfo(doc);
-        return local.get(doc._id)
+        return remote.get(doc._id)
             .then(function (res) {
               doc._rev = res._rev;
-              return local.put(doc, doc._id)
+              return remote.put(doc, doc._id)
                   .then(function (res) {
                     doc._id = res.id;
                     doc._rev = res.rev;
@@ -106,12 +107,58 @@ angular
       };
 
       _this.clear = function () {
-        return local.destroy();
+        return remote.destroy();
       };
 
       _this.delete = function (doc) {
-        return local.get(doc._id)
-            .then(local.remove);
+        return remote.get(doc._id)
+            .then(remote.remove);
       };
+
+      _this.batchCreate = function(docs){
+        return remote.bulkDocs(docs);
+      };
+
+      _this.getView = function(view, options){
+        return remote.query(view, options);
+
+      };
+
+      function pluck(response, property) {
+        function get(row) {
+          return row[property];
+        }
+        return response.rows.map(get);
+      }
+
+      _this.key = function(key) {
+        return {
+          startkey: key,
+          endkey: key + '\ufff0'
+        };
+      };
+
+      _this.pluckIDs = function(response) {
+        return pluck(response, 'id');
+      };
+
+      _this.pluckValues = function(response) {
+        return pluck(response, 'value');
+      };
+
+      _this.pluckDocs = function(response) {
+        return pluck(response, 'doc');
+      };
+
+      _this.rejectIfEmpty = function(docs) {
+        if (docs.length === 0) {
+          return $q.reject({
+            code: 404,
+            msg: 'No document found'
+          });
+        }
+        return docs;
+      };
+
 
     });
