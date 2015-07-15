@@ -2,5 +2,6 @@
 
 angular
 		.module('location', [
-			'recommender'
+			'recommender',
+		  'db'
 		]);

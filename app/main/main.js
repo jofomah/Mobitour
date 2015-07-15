@@ -4,6 +4,7 @@ angular
       'ionic',
       'ngCordova',
       'ui.router',
+      'ionic.rating',
       'recommender',
       'user',
       'location'
@@ -32,7 +33,7 @@ angular
           })
           .state('userPref', {
             url: '/user-pref',
-            templateUrl: '../user/templates/user-pref.html',
+            templateUrl: 'user/templates/user-pref.html',
             controller: 'UserPrefCtrl as userCtrl',
             resolve: {
               userProfile: function (userService, $q) {

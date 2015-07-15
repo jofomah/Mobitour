@@ -1,3 +1,5 @@
 'use strict';
 
-angular.module('recommender', []);
+angular.module('recommender', [
+		'user'
+]);

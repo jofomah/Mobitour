@@ -21,7 +21,7 @@ var jshint = function (fail) {
   };
 };
 gulp.task('jshint', jshint());
-//gulp.task('jshint-throw', jshint(true));
+gulp.task('jshint-throw', jshint(true));
 
 // check for jscs errors
 var jscs = function () {
@@ -31,7 +31,7 @@ var jscs = function () {
   };
 };
 gulp.task('jscs', jscs());
-//gulp.task('jscs-throw', jscs(true));
+gulp.task('jscs-throw', jscs(true));
 
 // check for jsonlint errors
 var jsonlint = function (fail) {
@@ -45,4 +45,4 @@ var jsonlint = function (fail) {
   };
 };
 gulp.task('jsonlint', jsonlint());
-//gulp.task('jsonlint-throw', jsonlint(true));
+gulp.task('jsonlint-throw', jsonlint(true));

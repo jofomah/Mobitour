@@ -40,6 +40,10 @@ angular
         return doc;
       };
 
+      _this.allDocs = function(params){
+        return remote.allDocs(params);
+      };
+
       _this.get = function (id) {
         return remote.get(id);
       };

@@ -24,7 +24,7 @@
           </ion-radio>
         </div>
         <button type="submit" class="button button-block button-positive button-large">
-          Get Recommendation
+          <span>Get Recommendation</span>
           <i class="ion-android-arrow-dropright-circle"></i>
         </button>
       </form>
@@ -34,23 +34,34 @@
     <ion-list ng-show="facilityPrefForm.$submitted && mainCtrl.locations.length === 0">
       <ion-item>
         <span>
-          No facility meet your requirement, please update your preferences or change location type!
+          No facility met your requirement, please update your preferences or change location type!
         </span>
       </ion-item>
     </ion-list>
 
     <!-- Recommended places list view -->
-    <ion-list ng-show="facilityPrefForm.$submitted && mainCtrl.locations.length > 0">
+    <ion-list ng-if="facilityPrefForm.$submitted && mainCtrl.locations.length > 0">
       <ion-item class="item item-thumbnail-left"
                 ng-repeat="loc in mainCtrl.locations track by $index">
-        <img src="loc.image.jpg">
+        <img ng-src="loc.images[0]">
         <h2 ng-bind="loc.name"></h2>
         <p>Type: {{ loc.type }}</p>
         <p>Address: {{ loc.address }}</p>
         <p> Ammenities: {{ loc.ammenities.join(', ') }}</p>
+        <label class="inline">
+          Rating:
+        </label>
+        <rating ng-model="mainCtrl.ratings[loc._id]" max="5"
+                state-on="'ion-ios-star'" state-off="'ion-ios-star-outline'">
+        </rating>
+        <button class="button button-positive button-large"
+            ng-click="mainCtrl.submitRating(loc._id)"
+            ng-disabled="mainCtrl.disable(loc._id)">
+          <span>Submit rating</span>
+          <i class="ion-ios-star-half"></i>
+        </button>
       </ion-item>
     </ion-list>
-
   </ion-content>
 
 
